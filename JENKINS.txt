@@ -1,0 +1,134 @@
+JENKINS
+MavenJava_Build
+1)Source code->git url
+2)branches */main
+3)Build steps->Invoke top level maven targets for clean and install
+4)Add posy build-actions->Archive the artifacts
+  give **/* in files to archive
+5)post-build actions->Build other projects
+   give:Mavenjava_Test
+
+MavenJava_Test:
+1)dont give git
+2)Build environment give delete workspace
+3)Build steps->Copy the artifacts from other projects
+  Name:MavenJava_Build
+  **/*
+ Select stable build
+4)Build steps->Invoke top level for test
+5)Add post-build->Archive artifacts **/*
+
+MavenWeb_Build:
+1)Source code->git url
+2)branches */main
+Give on poll scm * * * * *
+3)Build steps->Invoke top level maven targets for clean and install
+4)Add posy build-actions->Archive the artifacts
+  give **/* in files to archive
+5)post-build actions->Build other projects
+   give:MavenWeb_Test
+
+
+MavenWeb_Test
+1)dont give git
+2)Build environment give delete workspace
+3)Build steps->Copy the artifacts from other projects
+  Name:MavenJava_Build
+  **/*
+ Select stable build
+4)Build steps->Invoke top level for test
+5)Add post-build->Archive artifacts **/*
+6)Post build->build other projects
+  mavenZWeb_Deploy
+
+MavenWeb_Deploy
+1)dont give git
+2)Build environment give delete workspace
+3)Build steps->Copy the artifacts from other projects
+  Name:MavenWeb_Test
+  **/*
+ Select stable build
+5)Add post-build->Deploy war/ear to the container 
+Give war/ear as **/*.war
+Conext:folder name
+add tomcat
+give cred
+tomcat url
+
+
+POLL SCM
+1)Create pipeline project
+2)pipeline->pipeline script->paste coe
+pipeline {
+    agent any
+    tools {
+        maven 'MAVEN_HOME' // Ensure Maven is configured correctly in Jenkins
+    }
+    stages {
+        stage('Clean Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+        stage('Git Clone and Clean') {
+            steps {
+                script {
+                    try {
+                        // Use absolute paths to avoid dependency on configurations
+                        //bat 'C:\\Windows\\System32\\cmd.exe /c rmdir /s /q my-maven-project'
+                        bat 'C:\\Windows\\System32\\cmd.exe /c git clone https://github.com/Sudiksha1628/MAVEN.git'
+                    } catch (Exception e) {
+                        echo "Git clone or clean failed: ${e}"
+                    }
+                }
+            }
+        }
+        stage('Maven Clean') {
+            steps {
+                script {
+                    try {
+                        bat '"C:\\Program Files (x86)\\apache-maven-3.9.9\\bin\\mvn.cmd" clean -f my-maven-project'
+                    } catch (Exception e) {
+                        echo "Maven clean failed: ${e}"
+                    }
+                }
+            }
+        }
+        stage('Maven Install') {
+            steps {
+                script {
+                    try {
+                        bat '"C:\\Program Files (x86)\\apache-maven-3.9.9\\bin\\mvn.cmd" install -f my-maven-project'
+                    } catch (Exception e) {
+                        echo "Maven install failed: ${e}"
+                    }
+                }
+            }
+        }
+        stage('Maven Test') {
+            steps {
+                script {
+                    try {
+                        bat '"C:\\Program Files (x86)\\apache-maven-3.9.9\\bin\\mvn.cmd" test -f my-maven-project'
+                    } catch (Exception e) {
+                        echo "Maven test failed: ${e}"
+                    }
+                }
+            }
+        }
+        stage('Maven Package') {
+            steps {
+                script {
+                    try {
+                        bat '"C:\\Program Files (x86)\\apache-maven-3.9.9\\bin\\mvn.cmd" package -f my-maven-project'
+                    } catch (Exception e) {
+                        echo "Maven package failed: ${e}"
+                    }
+                }
+            }
+        }
+    }
+}
+trigger->build periodically->schedule * * * * * or H/15 * * * *
+save and build
+
