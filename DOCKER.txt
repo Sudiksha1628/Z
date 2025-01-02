@@ -1,0 +1,144 @@
+DOCKER:
+7b)
+docker --version
+docker pull hello-world
+docker images
+docker run hello-world
+docker ps -a
+docker rm containerID(hello-world)
+docker rmi hello-world
+
+
+docker pull ubuntu
+docker run -it -d ubuntu
+docker ps -a (copy ubuntu id)
+docker exec -it ID bash
+root...#echo Welcome
+exit
+docker search ubuntu
+
+docker pull redis or docker run redis:latest
+docker run --name newredis -d redis
+docker ps
+docker exec -it newredis -d redis-cli
+        SET name "abcd"
+        GET name
+        exit
+docker run resis:5.0
+In new cmd docker ps
+           docker stop ID
+docker rm ID
+docker rmi redis
+
+
+7C)
+docker pull ubuntu
+docker run -it --name newubuntu -d ubuntu
+docker exec -it ID bash
+         apt update
+         apt install git -y
+         git --version
+         echo Welcome to docker 
+docker stop ID
+docker commit ID sudiksha16/newubuntu2025
+docker login
+docker push sudiksha16/newubuntu2025
+docker logout
+docker rm ID
+docker rmi sudiksha16/newubuntu2025
+docker pull sudiksha16/newubuntu2025
+docker run --name newubuntu2025 -it sudiksha16/newubuntu2025
+docker ps -a
+docker rm and rmi
+
+7D)
+1)Create a folder docker
+2)Open cmd in the folder and type wsl
+3)In wsl: 
+-> vi Dockerfile: 
+#Use the official Node.js image as base
+FROM node:alpine
+
+#Set the working directory inside the container
+WORKDIR /app
+
+#Copy the files from the current directory on your local machine into the /app directory inside the container
+COPY . /app
+
+#Set the command to run the app.js file
+CMD ["node","sampledocker.js"]
+
+->vi samplefile.js: console.log("Docker file");
+4)In powershell:
+      cd folderpath
+      docker build -t myimage
+      docker images
+      docker tag myimage sudiksha16/myimage
+      docker push myimage sudiksha16/myimage
+
+7E)
+1)Create folder docker-compose and navigate cmd->wsl
+2)vi docker-compose.yml:
+# version: "3.8" # Docker Compose file format version
+
+services:
+  wordpress: # WordPress service
+    image: wordpress:latest
+    ports:
+      - "8000:80" # Map port 80 of the container to port 8080 of the host
+    environment:
+      WORDPRESS_DB_HOST: db:3306 # Database host
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_NAME: wordpress
+    depends_on:
+      - db # Ensures the db service starts first
+
+  db: # MySQL service
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wordpress
+      MYSQL_PASSWORD: wordpress
+
+3)In powershell:
+      cd folder path
+      docker-compose up -d
+      docker-compose down
+      docker-compose up -scale wordpress=2 -d
+4)Open localhost 8000
+5)It opens wordpress give title,username and pw
+6)Login to ger dashboard.
+
+
+7F)powershell
+minikube start --driver=docker
+minikube status
+minikube kubectl -- get pods -A
+minikube dashboard
+minikube version
+kubectl create deployments myngnix --image=nginx
+kubectl get deployments
+kubectl get pods
+kubectl describe pods
+kubectl scale deployment myngnix --replicas=3
+kubectl get deployments
+kubectl get pods
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/dahsboard/v2.7.0/aio/deploy/recommended.yaml
+kubectl port -forward myngnix.... 49979:80
+
+
+7G)
+Powershell:
+docker pu;; jasonrivers/nagios:latest(Check docker for crested)
+docker run --name nagiosdemo -p 8888:80 jasonrivers/nagios:latest
+Access localhost:8888
+us:nagiosdemo
+pw:nagios
+docker stop nagiosdemo
+docker rm ID
+docker rmi jasonrivers/magiosdemo
+
+
+       

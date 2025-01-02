@@ -1,0 +1,37 @@
+AWS:
+1)In folder add pem file and open in powershell using cd
+2)paste the ssh 
+3)sudo apt update
+ sudo apt-get install docker.io,git,nano
+4)Create another folder and create index.html
+5)open gitbash
+  git init
+  git add .
+  git commit
+  git branch -M main
+  git remote add origin http
+  git push -u origin main
+  git clone
+6)go to powerhsell clone again
+7)give ls u will get cloned folder navigate with cd
+8)ls u get index.html(optional)
+10)create nano Dockerfile:
+FROM nginx:alpine
+COPY . /usr/share/nginx/html
+11)sudo docker build -t mywebapp
+12)sudo docker run -d -p 80:80 mywebapp
+Copy ipv4 on webrowser
+sudo docker stop ID
+
+
+B)
+Here clone maven web repo 
+Dockerfile:
+FROM tomcat:9-jdk11
+COPY target/.*war /usr/local/tomcat/webapps
+sudo docker build -t Maven web
+sudo docker run -d -p 9900:8088 maven web app
+in inbound rules click edit
+add 9090 in rnage and 0.0. and save
+in browser: http://<IPv4>:9090/my-web-app
+

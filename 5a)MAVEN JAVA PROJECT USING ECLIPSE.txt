@@ -1,0 +1,85 @@
+5a)MAVEN JAVA PROJECT USING ECLIPSE:
+1)Go to File->new->other
+2)Under other you see Maven .Under Maven select Maven project and click on next.
+3)Let it be default and click on next again.
+4)Here you need to select the archetype. 
+5)In the archetype window type org.archetype.maven and select org.archeype.maven.quickstart with version 1.4 from the list of archetypes and click on next.
+6)In the next window five the following:
+Group ID: com.example
+Artifact ID: my-maven-project
+version: same
+and click on Finish
+7)In the console the artifacts are grouped .Give y and wait till you get build success. Your project is created.
+8)On the left side you can see your project which consists of:
+                    src/main/java :Java source code
+                    src/test/java :For test code
+                    pom.xml :Maven configuration file
+9)We need to update our project if needed. For that right click on the project->Maven->update project. In the window select your project name(my-maven-project) and click on ok.
+10)Now we run the maven build cycle ie clean, install, test and build.
+11)Right click on project->run as->Maven clean. Wait till you get the build success message. (clean deletes the unnecessary and target folders).
+12)Right click on project->run as->Maven install. Wait till you get the build success message. (compiles our java code and converts it into byte code).
+13)Right click on project->run as->Maven test. Wait till you get the build success message. (Testing our project)
+14)Right click on project->run as->Maven build. In the window give the following:
+     Goals: clean install test. Click Apply and run.
+Wait till you get the build success message.
+15)Now the .jar file is successfully created in targe folder.
+16)Right click on project->run as->Java Application. Hello World is displayed on console.
+
+Pushing in GitHub:
+1)Create a new rep. Scroll down add .gitignore and select Maven and create the repo.
+2)Create a folder Mavenweb and open gitbash.
+3)Copy http url and type git clone http.....
+4)cd MavenJava(folder name where it is clone)
+5)Go to c->users->sudik. Click on eclipse workspace. Seelect the project and copy those files and place them in cloned folder.
+6)In gibash:
+     git add .
+     git commit
+     git push
+7)Project is pushed.
+
+5B)
+1)Go to File->new->other
+2)Under other you see Maven .Under Maven select Maven project and click on next.
+3)Let it be default and click on next again.
+4)Here you need to select the archetype. 
+5)In the archetype window type org.archetype.maven and select org.archeype.maven.webapp with version 1.4 from the list of archetypes and click on next.
+6)In the next window five the following:
+Group ID: com.example
+Artifact ID: my-maven-project
+version: same
+and click on Finish
+7)In the console the artifacts are grouped .Give y and wait till you get build success. Your project is created.
+8)On the left side you can see your project which consists of:
+                    src->main->webapp we have index.jsp
+In dependencies add:
+<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>4.0.1</version>
+    <scope>provided</scope>
+</dependency>
+
+9)We need to update our project if needed. For that right click on the project->Maven->update project. In the window select your project name(my-maven-project) and click on ok.
+10)Now we run the maven build cycle ie clean, install, test and build.
+11)Right click on project->run as->Maven clean. Wait till you get the build success message. (clean deletes the unnecessary and target folders).
+12)Right click on project->run as->Maven install. Wait till you get the build success message. (compiles our java code and converts it into byte code).
+13)Right click on project->run as->Maven test. Wait till you get the build success message. (Testing our project)
+14)Right click on project->run as->Maven build. In the window give the following:
+     Goals: clean install test. Click Apply and run.
+Wait till you get the build success message.
+15)Now the .jar file is successfully created in targe folder.
+16)Right click on project->run as->Run on server. Hello World is displayed on console.
+
+Pushing in GitHub:
+1)Create a new rep. Scroll down add .gitignore and select Maven and create the repo.
+2)Create a folder Mavenjava and open gitbash.
+3)Copy http url and type git clone http.....
+4)cd MavenJava(folder name where it is clone)
+5)Go to c->users->sudik. Click on eclipse workspace. Seelect the project and copy those files and place them in cloned folder.
+6)In gibash:
+     git add .
+     git commit
+     git push
+7)Project is pushed.
+
