@@ -1,4 +1,13 @@
 AWS:
+Start lab
+WHhen it turns green clcik on AWS
+In AWS dashboard select Ec2
+Click on launch instance
+Give name and select ubuntu
+Create new key pair,give a name and clu=ick create key pair
+The key pair will be saved
+In network setting clcik on all boxes and click Launch Instnace
+Let 2 cassses are passed Select it anc connect 
 1)In folder add pem file and open in powershell using cd
 2)paste the ssh 
 3)sudo apt update
