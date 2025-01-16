@@ -3,7 +3,7 @@
 2)Under other you see Maven .Under Maven select Maven project and click on next.
 3)Let it be default and click on next again.
 4)Here you need to select the archetype. 
-5)In the archetype window type org.archetype.maven and select org.archeype.maven.quickstart with version 1.4 from the list of archetypes and click on next.
+5)In the archetype window type org.apache.maven.archetypes and select maven-archetype-quickstart with version 1.4 from the list of archetypes and click on next.
 6)In the next window five the following:
 Group ID: com.example
 Artifact ID: my-maven-project
