@@ -1,5 +1,5 @@
 DOCKER:
-7b)
+7b)DOCKER CLI COMMANDS
 docker --version
 docker pull hello-world
 docker images
@@ -31,7 +31,7 @@ docker rm ID
 docker rmi redis
 
 
-7C)
+7C)MODIFYAND PUSH DOCKER IMAGE
 docker pull ubuntu
 docker run -it --name newubuntu -d ubuntu
 docker exec -it ID bash
@@ -51,7 +51,7 @@ docker run --name newubuntu2025 -it sudiksha16/newubuntu2025
 docker ps -a
 docker rm and rmi
 
-7D)
+7D)CREATE AND PUSH DOCKER FILE IMAGE
 1)Create a folder docker
 2)Open cmd in the folder and type wsl
 3)In wsl: 
@@ -71,12 +71,12 @@ CMD ["node","sampledocker.js"]
 ->vi samplefile.js: console.log("Docker file");
 4)In powershell:
       cd folderpath
-      docker build -t myimage
+      docker build -t myimage .
       docker images
       docker tag myimage sudiksha16/myimage
       docker push myimage sudiksha16/myimage
 
-7E)
+7E)RUNNING MULTIPLE CONTAINERS USING DOCKER COMPOSE
 1)Create folder docker-compose and navigate cmd->wsl
 2)vi docker-compose.yml:
 # version: "3.8" # Docker Compose file format version
@@ -112,13 +112,14 @@ services:
 6)Login to ger dashboard.
 
 
-7F)powershell
+7F)DEPLOYING AND SCALING APPLICATIONS USING MINIKUBE
+powershell
 minikube start --driver=docker
 minikube status
 minikube kubectl -- get pods -A
 minikube dashboard
 minikube version
-kubectl create deployments myngnix --image=nginx
+kubectl create deployment mynginx --image=nginx
 kubectl get deployments
 kubectl get pods
 kubectl describe pods
@@ -129,9 +130,11 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dahsboard/v2.7.0/a
 kubectl port -forward myngnix.... 49979:80
 
 
-7G)
+7G)DEPLOYING AND MANAGING MONITORING SYSTEMS USING NAGIOS IN
+DOCKER
+Exp
 Powershell:
-docker pu;; jasonrivers/nagios:latest(Check docker for crested)
+docker pull jasonrivers/nagios:latest(Check docker for crested)
 docker run --name nagiosdemo -p 8888:80 jasonrivers/nagios:latest
 Access localhost:8888
 us:nagiosdemo
