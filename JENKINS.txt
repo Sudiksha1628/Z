@@ -1,7 +1,9 @@
 JENKINS
-MavenJava_Build
-1)Source code->git url
-2)branches */main
+MavenJava_Build:
+Click on new item.Give project name and select freestyle project.
+Give some description
+1)Go Source code->git url
+2)In branches to build give */main
 3)Build steps->Invoke top level maven targets for clean and install
 4)Add posy build-actions->Archive the artifacts
   give **/* in files to archive
@@ -13,7 +15,7 @@ MavenJava_Test:
 2)Build environment give delete workspace
 3)Build steps->Copy the artifacts from other projects
   Name:MavenJava_Build
-  **/*
+  Artifacts to copy:**/*
  Select stable build
 4)Build steps->Invoke top level for test
 5)Add post-build->Archive artifacts **/*
